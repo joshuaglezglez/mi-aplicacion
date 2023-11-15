@@ -1,24 +1,13 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Login from './login'; // Importa el componente de inicio de sesión
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        {/* Renderiza el componente de inicio de sesión */}
+        <Login />
+      </div>
   );
 }
 
