@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate en lugar de useHistory
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate(); // Utiliza useNavigate en lugar de useHistory
+
+    const validUser = 'usuario@example.com';
+    const validPassword = 'contraseña123';
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -14,8 +19,15 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Aquí puedes agregar la lógica de autenticación
-        console.log(`Correo electrónico: ${email}, Contraseña: ${password}`);
+
+        if (email === validUser && password === validPassword) {
+            // Autenticación exitosa
+            // Redirige al usuario a la página de bienvenida con el correo electrónico
+            navigate(`/bienvenida?email=${email}`);
+        } else {
+            // Credenciales inválidas
+            console.error('Credenciales inválidas.');
+        }
     };
 
     return (
