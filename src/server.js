@@ -1,14 +1,18 @@
 const express = require('express');
-const sqlite3 = require('sqlite3');
+const sqlite3 = require('sqlite3').verbose();
+const cors = require('cors'); // Necesitas instalar el paquete 'cors' si aún no lo has hecho
+
 const app = express();
+app.use(cors());
+
 
 app.use(express.json());
 
-const db = new sqlite3.Database('miBaseDeDatos.db', (err) => {
+let db = new sqlite3.Database('miBaseDeDatos.db', (err) => {
     if (err) {
         console.error(err.message);
     } else {
-        console.log('Conectado a la base de datos SQLite.');
+        console.log('Connected to the SQLite database.');
     }
 });
 
