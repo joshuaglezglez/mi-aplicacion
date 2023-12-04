@@ -17,16 +17,26 @@ function Login() {
         setPassword(e.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (email === validUser && password === validPassword) {
-            // Autenticación exitosa
-            // Redirige al usuario a la página de bienvenida con el correo electrónico
-            navigate(`/bienvenida?email=${email}`);
-        } else {
-            // Credenciales inválidas
-            console.error('Credenciales inválidas.');
+        try {
+            const response = await fetch('http://localhost:3001/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                navigate(`/bienvenida?email=${email}`);
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error('Error de conexión con el servidor.');
         }
     };
 
