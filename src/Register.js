@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -16,34 +16,16 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // Aquí puedes agregar la lógica para enviar los datos al backend
+        // Por ejemplo, una solicitud POST a tu servidor
 
-        try {
-            const response = await fetch('http://localhost:3001/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            const data = await response.json();
-            if (response.ok) {
-                // Si la respuesta es exitosa, redirige al usuario
-                navigate(`/bienvenida?email=${email}`);
-            } else {
-                // Si la respuesta del servidor indica un error (ej. credenciales incorrectas)
-                alert(data.message || 'Error en el inicio de sesión');
-            }
-        } catch (error) {
-            // Maneja errores de red o conexión
-            console.error('Error de conexión con el servidor:', error);
-            alert('No se pudo conectar con el servidor. Por favor, intenta de nuevo más tarde.');
-        }
+        // Después del registro exitoso, puedes redirigir al usuario
+        // navigate('/ruta-a-donde-ir-despues-del-registro');
     };
 
     return (
         <div>
-            <h2>Iniciar Sesión</h2>
+            <h2>Registro</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Correo Electrónico:</label>
@@ -65,15 +47,10 @@ function Login() {
                         required
                     />
                 </div>
-                <button type="submit">Iniciar Sesión</button>
+                <button type="submit">Registrar</button>
             </form>
-            <div>
-                ¿No tienes una cuenta? <a href="/register">Regístrate</a>
-            </div>
         </div>
     );
-
-
 }
 
-export default Login;
+export default Register;

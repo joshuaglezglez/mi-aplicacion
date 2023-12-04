@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Login'; // Asegúrate de importar tu componente Login desde la ubicación correcta
-import Welcome from './Welcome'; // Importa el componente de bienvenida si lo tienes
+import Welcome from './Welcome';
+import Register from './Register';
 
 function App() {
     return (
@@ -9,6 +10,7 @@ function App() {
             <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/bienvenida" element={<Welcome />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/" element={<Login />} /> {/* Ruta para la página de inicio */}
             </Routes>
         </Router>
