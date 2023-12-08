@@ -70,6 +70,9 @@ function Login() {
             <div>
                 ¿No tienes una cuenta? <a href="/register">Regístrate</a>
             </div>
+            <div>
+                <a href="/password-recovery">¿Olvidaste tu contraseña?</a>
+            </div>
         </div>
     );
 
