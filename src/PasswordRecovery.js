@@ -34,6 +34,9 @@ function PasswordRecovery() {
                 </div>
                 <button type="submit">Recuperar Contraseña</button>
             </form>
+            <div>
+                ¿Ya recibiste tu código de reestablecimiento? <a href="/reset-password">Da click aquí para cambiar tu contraseña</a>
+            </div>
         </div>
     );
 }
